@@ -1,13 +1,285 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&family=Inter:wght@700&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --first-beige: #f7e2c3;
+  --second-beige: #efd7b3;
+  --error-color: #ce462e;
+}
+
+body {
+  font-family: "Almarai", sans-serif;
+  direction: rtl;
+}
+
+h1 {
+  font-family: "Almarai", sans-serif;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: "Almarai", sans-serif;
+  font-weight: 400;
+}
+
+input,
+textarea {
+  font-family: "Almarai", sans-serif;
+}
+
+header {
+  margin: 50px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+header img {
+  width: 250px;
+}
+
+@media (max-width: 768px) {
+  header img {
+    width: 200px;
+  }
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.folder-item {
+  padding: 0.9em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.folder-item svg:hover {
+  cursor: pointer;
+}
+
+.folder-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-49%);
+  width: 97%;
+  border-bottom: 2px solid var(--second-beige);
+}
+
+.unfold-folder-part {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.unfold-folder-part svg {
+  transform: scale(1.2);
+  margin-right: -0.7em;
+  margin-left: 0.2em;
+}
+
+@media (min-width: 768px) {
+  .unfold-folder-part svg {
+    margin-top: 0.2em;
+  }
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 0.7em;
+  padding-left: 1.3em;
+  padding-bottom: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.file-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-49%);
+  width: 97%;
+  border-bottom: 1.8px solid var(--first-beige);
+}
+
+.file-item h2:hover {
+  cursor: pointer;
+}
+
+.file-item svg {
+  transform: scale(1.2);
+  margin-right: 0.7em;
+}
+
+.file-item svg:hover {
+  cursor: pointer;
+}
+
+.second-beige {
+  color: var(--second-beige);
+}
+
+.add-folder-form,
+.add-file-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.folder-title-input,
+.file-title-input,
+.file-content-input {
+  width: 90%;
+}
+
+.folder-title-input label,
+.file-title-input label,
+.file-content-input label {
+  display: block;
+  font-size: 1.3rem;
+  color: var(--second-beige);
+  margin-bottom: 0.9rem;
+  margin-top: 0.2rem;
+  margin-right: 0.3rem;
+}
+
+.folder-title-input input,
+.file-title-input input,
+.file-content-input textarea {
+  width: 100%;
+  border: 2px solid var(--first-beige);
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.file-content-input textarea {
+  height: 40vh;
+  font-size: 1.2rem;
+}
+
+.folder-title-input input:focus,
+.file-title-input input:focus,
+.file-content-input textarea:focus {
+  border: 2px solid var(--second-beige);
+  outline: none;
+}
+
+.add-folder-btn,
+.add-file-btn {
+  width: 90%;
+  padding: 0.5rem;
+  margin: 0.7rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: #ffffff;
+  border: 1px solid var(--second-beige);
+  background-color: var(--second-beige);
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+.add-folder-btn:focus,
+.add-file-btn:focus {
+  outline: none;
+}
+
+.form-btns input[type="submit"] {
+  display: none;
+}
+
+.form-btns {
+  display: flex;
+  margin-top: 0.3em;
+  width: 60%;
+  justify-content: space-evenly;
+}
+
+.response-input {
+  width: 90%;
+  height: 40vh;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  margin-bottom: 0.5em;
+  border-radius: 10px;
+}
+
+.corrected-text-input,
+.entered-text-input {
+  height: 50%;
+  max-height: 50%;
+  overflow: auto;
+  border-radius: 8px;
+  padding: 5px;
+  border: 2px solid var(--second-beige);
+}
+
+.entered-text-input {
+  font-size: 1.2rem;
+}
+
+.entered-text-input:focus {
+  outline: none;
+}
+
+footer {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.7em;
+}
+
+footer .name {
+  height: 50px;
+  padding-bottom: 5px;
+}
+
+footer .github {
+  height: 40px;
+}
+
+@media (max-width: 768px) {
+  footer .name {
+    height: 53px;
+    padding-bottom: 15px;
+  }
+
+  footer .github {
+    height: 33px;
+  }
 }
